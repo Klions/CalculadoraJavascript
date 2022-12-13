@@ -388,7 +388,7 @@
 	</style>
 
 
-	<title>Calculadora Penal - Conexão RJ</title>
+	<title>Calculadora Penal - CENTRAL</title>
 	<link rel="icon" type="image/x-icon" href="https://imgur.com/KMQ0jEv.png">
 	
 
@@ -1199,8 +1199,6 @@
 		});
 
 
-
-		// Nix 08/07/2022
 		$("#delacao-premiada").focusout(function () {
 			var pena_txt = document.getElementById("pena");
 			var penaReduzir = 0;
@@ -1233,7 +1231,6 @@
 			}
 
 		})
-		// Nix 08/07/2022
 		$("#reu-primario").change(function () {
 			var pena_txt = document.getElementById("pena");
 			var penaReduzir = 0;
@@ -1250,9 +1247,6 @@
 
 
 		});
-		// Nix 08/07/2022
-
-		// Nix 08/07/2022
 		function recalcularPena() {
 			var pena_txt = document.getElementById("pena");
 			var fianca_txt = document.getElementById("fianca");
@@ -1302,7 +1296,6 @@
 				fianca_txt.value = "R$" + Fianca.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
 			}
 		}
-		// Nix 08/07/2022
 		$("#advogado-30").change(function () {
 			if ($("#advogado-30")[0].checked === true) {
 				$(".advogado-1")[0].style.display = 'block';
