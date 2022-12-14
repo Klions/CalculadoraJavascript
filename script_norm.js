@@ -98,6 +98,7 @@ function calcular() {
         $("#needmoneysujo")[0].style.display = 'none';
     }
 
+    var InaFianc = false;
     /* Crimes */
     var crimes = document.getElementsByName('crime');
     for (var i = 0; i < crimes.length; i++) {
@@ -126,6 +127,12 @@ function calcular() {
             FormatCrimes+=crimes[i].id+'\n';
             FormatCrimes2+='* '+crimes[i].id+''+desccrimes+'\n';
         }
+    }
+    if(isNaN(Fianca) || Fianca <= 0) {
+        $("#fianca-checkbox")[0].checked = false;
+        $("#fianca-checkbox").prop("disabled", true);
+    }else{
+        $("#fianca-checkbox").prop("disabled", false);
     }
     
     var ReducaoPena = 0;
@@ -271,6 +278,15 @@ function calcular() {
     if(FormatAtenuantes !== ''){
         FormatDiscord+= '\n# ATENUANTES:\n';
         FormatDiscord+= FormatAtenuantes;
+    }
+
+    if($("#itens-apreendidos").val() !== '' && $("#itens-apreendidos").val().length > 2){
+        FormatDiscord+= '\n# ITENS APREENDIDOS:\n';
+        var valitensapreen = $("#itens-apreendidos").val();
+        var itens_apreen = valitensapreen.split("\n");
+        for (var it = 0; it < itens_apreen.length; it++) {
+            FormatDiscord+= '* '+itens_apreen[it]+'\n';
+        }
     }
 
     // PORTE
