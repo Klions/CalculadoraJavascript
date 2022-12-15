@@ -19,7 +19,18 @@ $("#perito-checkbox").change(function () {
     calcular();
 });
 
-
+var Calls = [];
+setTimeout(AtualizarCalls, 1000);
+setInterval(AtualizarCalls, 60000);
+function AtualizarCalls(){
+    $.getJSON('calls.php', function(data) {
+        // JSON result in `data` variable
+        Calls = data;
+        console.log(Calls);
+    });
+    
+    //console.log('JSON.stringify(Calls): '+JSON.stringify(Calls));
+}
 
 var timeout_copy = 0;
 
@@ -311,9 +322,42 @@ function calcular() {
 
     FormatDiscord += '* DATA: '+moment().format("DD/MM/YYYY HH:mm");
     
+    // PEGAR DISCORD
+    if($("#rg_policial").val() !== '' && $("#rg_policial").val().length > 0 && parseInt($("#rg_policial").val()) > 0){
+        var RG_POLICIA = parseInt($("#rg_policial").val());
+        setCookie('rg_policial', RG_POLICIA);
+        var FormatCall = '';
+        var CallUser = getCallUserDiscord(RG_POLICIA);
+        if(CallUser){
+            var usuarios = '';
+            for (var u = 0; u < CallUser.users.length; u++) {
+                if(usuarios !== '') usuarios+=', '
+                usuarios += '<@'+CallUser.users[u].discord+'> ('+CallUser.users[u].user_id+')';
+            }
+            if(usuarios !== ''){
+                FormatCall = '`🔊` **'+CallUser.nome+'** `►` '+usuarios;
+            }
+        }
+    }
 
-    document.getElementById("discord-text").value = '```md\n'+FormatDiscord+'\n```';
+    document.getElementById("discord-text").value = '```md\n'+FormatDiscord+'\n```'+FormatCall;
 }
+
+function getCallUserDiscord(user_id){
+    if(Calls && Calls.length > 0){
+        for (var i = 0; i < Calls.length; i++) {
+            if(Calls[i] && Calls[i].nome) {
+                for (var i2 = 0; i2 < Calls[i].users.length; i2++) {
+                    if(Calls[i].users[i2].user_id && Calls[i].users[i2].user_id == user_id){
+                        return Calls[i];
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
 function calculoPena() {
     var pena = $("#pena-reducao")[0].value;
     var penaReduzir = 0;
@@ -370,7 +414,12 @@ function calculoPena() {
 
 
 }
+
 function limpar() {
+    if(getCookie('rg_policial') !== ''){
+        document.getElementById("rg_policial").value = getCookie('rg_policial');
+    }
+
     document.getElementById("preso_nome").value = "";
     document.getElementById("preso_rg").value = "";
     $("#preso_nome")[0].focus();
