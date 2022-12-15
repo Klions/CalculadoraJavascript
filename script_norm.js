@@ -19,6 +19,18 @@ $("#perito-checkbox").change(function () {
     calcular();
 });
 
+var Calls = [];
+setTimeout(AtualizarCalls, 1000);
+setInterval(AtualizarCalls, 60000);
+function AtualizarCalls(){
+    $.getJSON('http://zigzum.com.br/calls.php', function(data) {
+        // JSON result in `data` variable
+        Calls = data;
+        //console.log(Calls);
+    });
+    //console.log('JSON.stringify(Calls): '+JSON.stringify(Calls));
+}
+
 var timeout_copy = 0;
 
 $("#advogado-30").change(function () {
