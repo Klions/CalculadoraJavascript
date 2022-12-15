@@ -448,50 +448,41 @@
 
 <body>
 	<div class="fc quadrotopo form-control">
+		<!--<div style="margin: auto;width: 30%;flex: 0 0 auto;">
+			<h3>Seu RG</h3>
+			<input type="text" placeholder="SEU RG" id="rg_policial" name="rg_policial" class="inputnumber form-control" size="8" style="margin-right:10px">
+		</div>-->
 		<div style="margin: auto;width: 45%;flex: 0 0 auto;">
 			<h3>Nome do Preso</h3>
-			<input type="text" placeholder="NOME" id="preso_nome" name="preso_nome" class="inputnumber form-control" size="8" style="margin-right:10px">
+			<input type="text" placeholder="NOME DO PRESO" id="preso_nome" name="preso_nome" class="inputnumber form-control" size="8" style="margin-right:10px">
 		</div>
 		
 		<div style="margin: auto;width: 45%;flex: 0 0 auto;">
 			<h3>RG do Preso</h3>
-			<input type="number" placeholder="RG" id="preso_rg" name="preso_rg" class="inputnumber form-control" size="8" style="margin-right:10px">
+			<input type="number" placeholder="RG DO PRESO" id="preso_rg" name="preso_rg" class="inputnumber form-control" size="8" style="margin-right:10px">
 		</div>
 	</div>
 	<div id="1" class="fc quadro form-control">
 		<h3>
 			<font color="#022d42">CRIMES 0.0:</font>
 		</h3>
-
-		<div class="col col-md-12">
-			<input id="Art. 0.0 - Fiança" type="checkbox" class="form-check-input" name="crime" value="1|0|0"
-				onclick="calcular()">
-			<label class="form-check-label" title="Quando o cidadão paga a fiança, deve enviar o mesmo à prisão por apenas 1 mês para registro.
-				" for="Art. 0.0 - Fiança">Art. 0.0 - Fiança</label>
-		</div>
 		<div class="col col-md-12">
 			<input id="Art. 0.1 - Azaralhamento" type="checkbox" class="form-check-input" name="crime"
-				value="100|100000|135000" onclick="calcular()">
+				value="100|100000|130000" onclick="calcular()">
 			<label class="form-check-label" title="Quando alguém está bagunçando no recrutamento.
 				" for="Art. 0.1 - Azaralhamento">Art. 0.1 - Azaralhamento</label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 0.2 - Prisão Máxima" type="checkbox" class="form-check-input" name="crime"
-				value="100|250000|0" onclick="calcular()">
-			<label class="form-check-label" title="Quando a prisão é correspondida igual a 100 meses
-			" for="Art. 0.2 - Prisão Máxima">Art. 0.2 - Prisão Máxima</label>
-		</div>
-		<div class="col col-md-12">
-			<input id="Art. 0.3 - Prisão Militar" type="checkbox" class="form-check-input" name="crime"
+			<input id="Art. 0.2 - Prisão Militar" type="checkbox" class="form-check-input" name="crime"
 				value="100|0|NA" onclick="calcular()">
-			<label class="form-check-label" title="Quando um oficial da lei deixa de cumprir uma ordem direta ou age fora das condutas e éticas e morais de sua função.
-				">Art. 0.3 - Prisão Militar</label>
+			<label class="form-check-label" title="Quando um oficial da lei deixa de cumprir uma ordem direta ou age fora das condutas e éticas e morais de sua função."
+				for="Art. 0.2 - Prisão Militar">Art. 0.2 - Prisão Militar</label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 0.4 - Prevaricação" type="checkbox" class="form-check-input" name="crime"
+			<input id="Art. 0.3 - Prevaricação" type="checkbox" class="form-check-input" name="crime"
 				value="100|100000|NA" onclick="calcular()">
 			<label class="form-check-label" title="É um dos crimes praticados por funcionário público contra a administração em geral que consiste em retardar ou deixar de praticar, indevidamente, ato de ofício, ou praticá-lo contra disposição expressa de lei, para satisfazer interesse ou sentimento pessoal.
-					" for="Art. 0.4 - Prevaricação">Art. 0.4 - Prevaricação</label>
+					" for="Art. 0.3 - Prevaricação">Art. 0.3 - Prevaricação</label>
 		</div>
 		<hr>
 		<h3>
@@ -534,7 +525,7 @@
 
 		<hr>
 		<h3>
-			<font color="#022d42">CRIMES CONTRA DIREITOS FUNDAMENTAIS:</font>
+			<font color="#022d42">DOS CRIMES VIOLENTOS:</font>
 		</h3>
 		<div class="col col-md-12">
 			<input id="Art. 2.1 - Lesão Corporal" type="checkbox" class="form-check-input" name="crime"
@@ -542,22 +533,18 @@
 			<label class="form-check-label" title="Causar danos significativos a outra pessoa através do toque intencional ofensivo ou prejudicial a essa pessoa sem o seu consentimento. Nota: A Lesão Corporal só se aplica se o indivíduo estiver incapacitado (derrubado). 
 			" for="Art. 2.1 - Lesão Corporal"> Art. 2.1 - Lesão Corporal</label>
 		</div>
-		<!-- 
 		<div class="col col-md-12">
-	<input id="Art. 2.2 - Incêndio" type="checkbox" class="form-check-input" name="crime" value="10|30000|50000" onclick="calcular()">
-	<label class="form-check-label" for="Art. 2.2 - Incêndio">Art. 2.2 - Incêndio </label>
-			</div> -->
-		<div class="col col-md-12">
-			<input id="Art. 2.2 - Sequestro" type="checkbox" class="form-check-input" name="crime" value="50|200000|0"
-				onclick="calcular()">
+			<input id="Art. 2.2 - Sequestro" type="checkbox" class="form-check-input" name="crime" 
+				value="50|200000|0" onclick="calcular()">
 			<label class="form-check-label" title="Apreender e levar ilegalmente uma pessoa pela força ou fraude, ou apreender e deter uma pessoa contra a sua vontade com a intenção de levar essa pessoa embora mais tarde. No caso em que vários reféns são tomados de uma só vez, apenas uma cobrança será apresentada. 
 			" for="Art. 2.2 - Sequestro">Art. 2.2 - Sequestro</label>
 		</div>
-		<!-- 	<div class="col col-md-12">
-	<input id="Art. 2.4 - Cárcere Privado" type="checkbox" class="form-check-input" name="crime" value="15|50000|75000" onclick="calcular()">
-	<label class="form-check-label" for="Art. 2.4 - Cárcere Privado">Art. 2.4 - Cárcere Privado</label>
+	 	<div class="col col-md-12">
+			<input id="Art. 2.3 - Cárcere Privado" type="checkbox" class="form-check-input" name="crime" 
+				value="50|200000|0" onclick="calcular()">
+			<label class="form-check-label" for="Art. 2.3 - Cárcere Privado">Art. 2.3 - Cárcere Privado</label>
 		</div>
-		<hr> -->
+		<hr>
 
 
 		<hr>
@@ -569,8 +556,8 @@
 	<label class="form-check-label" for="Art. 3.1 - Desmanche de Veículos">Art. 3.1 - Desmanche de Veículos</label>
 		</div> -->
 		<div class="col col-md-12">
-			<input id="Art. 3.1 - Furto" type="checkbox" class="form-check-input" name="crime" value="35|50000|65000"
-				onclick="calcular()">
+			<input id="Art. 3.1 - Furto" type="checkbox" class="form-check-input" name="crime" 
+				value="35|50000|65000" onclick="calcular()">
 			<label class="form-check-label" title="Subtrair, para si ou para outrem, coisa alheia móvel, mas por circunstâncias não previstas pelo agente, não se consuma o pretendido. 
 			" for="Art. 3.1 - Furto">Art. 3.1 - Furto </label>
 		</div>
@@ -581,18 +568,22 @@
 			" for="Art. 3.2 - Receptação de Veículos">Art. 3.2 - Receptação de Veículos
 			</label>
 		</div>
-		<!-- <div class="col col-md-12">
-			<input id="Art. 3.4 - Roubo de Veículos" type="checkbox" class="form-check-input" name="crime" value="15|50000|70000" onclick="calcular()">
-	<label class="form-check-label" for="Art. 3.4 - Roubo de Veículos">Art. 3.4 - Roubo de Veículos</label>
-	</div>
-	<div class="col col-md-12">
-		<input id="Art. 3.5 - Tentativa de Furto" type="checkbox" class="form-check-input" name="crime" value="10|30000|50000" onclick="calcular()">
-	<label class="form-check-label" for="Art. 3.5 - Tentativa de Furto">Art. 3.5 - Tentativa de Furto</label>
-	</div>
-	<div class="col col-md-12">
-			<input id="Art. 3.6 - Furto de Veículos" type="checkbox" class="form-check-input" name="crime" value="15|40000|55000" onclick="calcular()">
-	<label class="form-check-label" for="Art. 3.6 - Furto de Veículos">Art. 3.6 - Furto de Veículos</label>
-	</div> -->
+		<div class="col col-md-12">
+			<input id="Art. 3.3 - Tentativa de Furto" type="checkbox" class="form-check-input" name="crime" 
+				value="10|30000|50000" onclick="calcular()">
+			<label class="form-check-label" for="Art. 3.3 - Tentativa de Furto">Art. 3.3 - Tentativa de Furto</label>
+		</div>
+		<div class="col col-md-12">
+			<input id="Art. 3.4 - Furto de Veículos" type="checkbox" class="form-check-input" name="crime" 
+				value="15|40000|55000" onclick="calcular()">
+			<label class="form-check-label" for="Art. 3.4 - Furto de Veículos">Art. 3.4 - Furto de Veículos</label>
+		</div>
+		<!--
+		<div class="col col-md-12">
+				<input id="Art. 3.5 - Furto de Residências" type="checkbox" class="form-check-input" name="crime" 
+					value="15|40000|55000" onclick="calcular()">
+			<label class="form-check-label" for="Art. 3.5 - Furto de Residências">Art. 3.5 - Furto de Residências</label>
+		</div>-->
 		<hr>
 
 
@@ -601,7 +592,8 @@
 			<font color="#022d42">DOS ROUBOS E DA EXTORSÃO:</font>
 		</h3>
 		<div class="col col-md-12">
-			<input id="Art. 4.1 - Roubo" type="checkbox" class="form-check-input" name="crime" value="40|100000|130000"
+			<input id="Art. 4.1 - Roubo" type="checkbox" class="form-check-input" name="crime" 
+				value="40|100000|130000"
 				onclick="calcular()">
 			<label class="form-check-label" title="Subtrair coisa móvel alheia, para si ou para outrem, mediante grave ameaça ou violência a pessoa, ou depois de havê-la, por qualquer meio, reduzido à impossibilidade de resistência 
 			" for="Art. 4.1 - Roubo">Art. 4.1 - Roubo</label>
@@ -614,7 +606,8 @@
 				Eletrônico </label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 4.3 - Extorsão" type="checkbox" class="form-check-input" name="crime" value="40|50000|65000"
+			<input id="Art. 4.3 - Extorsão" type="checkbox" class="form-check-input" name="crime" 
+				value="40|50000|65000"
 				onclick="calcular()">
 			<label class="form-check-label" title="Constranger alguém, mediante violência ou grave ameaça, e com o intuito de obter para si ou para outrem indevida vantagem econômica, a fazer, tolerar que se faça ou deixar de fazer alguma coisa
 			" for="Art. 4.3 - Extorsão">Art. 4.3 - Extorsão</label>
@@ -666,7 +659,7 @@
 		</div>
 		<div class="col col-md-12">
 			<input id="Art. 5.7 - Posse de Arma Branca" type="checkbox" class="form-check-input" name="crime"
-				value="0|30000|0" onclick="calcular()">
+				value="1|30000|0" onclick="calcular()">
 			<label class="form-check-label" title="Posse de qualquer ferramenta de que possa ser utilizada como arma corpo-a-corpo de maneira imprudente.
 			" for="Art. 5.7 - Posse de Arma Branca">Art. 5.7 - Posse de Arma Branca
 			</label>
@@ -717,7 +710,7 @@
 
 		<div class="col col-md-12">
 			<input id="Art. 6.3 - Posse de Drogas (1 a 5)" type="checkbox" class="form-check-input" name="crime"
-				value="0|30000|0" onclick="calcular()">
+				value="1|30000|0" onclick="calcular()">
 			<label class="form-check-label" title="Abaixo de 6, apenas apreender
 			" for="Art. 6.3 - Posse de Drogas (1 a 5)">Art. 6.3 - Posse de Drogas (1 a
 				5)</label>
@@ -758,7 +751,8 @@
 				Ideológica</label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 8.2 - Perjúrio" type="checkbox" class="form-check-input" name="crime" value="10|10000|13000"
+			<input id="Art. 8.2 - Perjúrio" type="checkbox" class="form-check-input" name="crime" 
+				value="10|10000|13000"
 				onclick="calcular()">
 			<label
 				title="Crime de falso testemunho ou de falsa acusação; testemunho em que se afirma, em prejuízo de outrem ou da justiça, algo que a testemunha sabe ser falso."
@@ -772,6 +766,31 @@
 			<label class="form-check-label" title="Consiste na associação de quatro ou mais pessoas que se dedicam a cometer um ou mais delitos.
 			" for="Art. 8.3 - Formação de Quadrilha">Art. 8.3 - Formação de
 				Quadrilha</label>
+		</div>
+
+		<div class="col col-md-12">
+			<input id="Art. 8.4 - Associação Criminosa" type="checkbox" class="form-check-input" name="crime"
+				value="30|65000|100000" onclick="calcular()">
+			<label class="form-check-label" title="Consiste na associação de duas ou mais pessoas que se dedicam a cometer um ou mais delitos.
+			" for="Art. 8.4 - Assosiação Criminosa">Art. 8.4 - Assosiação Criminosa</label>
+		</div>
+		<div class="col col-md-12">
+			<input id="Art. 8.5 - Difamação" type="checkbox" class="form-check-input" name="crime"
+				value="15|30000|50000" onclick="calcular()">
+			<label class="form-check-label" title="É a imputação ofensiva atribuída contra a honorabilidade de alguém com a intenção de desacreditá-lo na sociedade em que vive, e provocar contra ele desprezo ou menosprezo público." for="Art. 8.5 - Difamação">Art. 8.5 - Difamação
+		</label>
+		</div>
+		<div class="col col-md-12">
+			<input id="Art. 8.6 - Injúria" type="checkbox" class="form-check-input" name="crime"
+				value="15|30000|50000" onclick="calcular()">
+			<label class="form-check-label" title="Entende-se ofensa que venha atingir a pessoa, em desrespeito a seu decoro, a sua honra, a seus bens ou a sua vida." for="Art. 8.6 - Injúria">Art. 8.6 - Injúria
+		</label>
+		</div>
+		<div class="col col-md-12">
+			<input id="Art. 8.7 - Calúnia" type="checkbox" class="form-check-input" name="crime"
+				value="15|30000|50000" onclick="calcular()">
+			<label class="form-check-label" title="É dizer de forma mentirosa que alguém cometeu crime" for="Art. 8.7 - Calúnia">Art. 8.7 - Calúnia
+			</label>
 		</div>
 
 		<hr>
@@ -840,7 +859,7 @@
 		</div>
 		<div class="col col-md-12">
 			<input id="Art. 10.6 - Atentado ao Pudor" type="checkbox" class="form-check-input" name="crime"
-				value="50|50000|65000" onclick="calcular()">
+				value="50|50000|100000" onclick="calcular()">
 			<label class="form-check-label" title="Expondo intencionalmente as partes íntimas ou privadas do corpo em um lugar público.
 			" for="Art. 10.6 - Atentado ao Pudor">Art. 10.6 - Atentado ao Pudor</label>
 		</div>
@@ -857,11 +876,12 @@
 			" for="Art. 10.8 - Vandalismo">Art. 10.8 - Vandalismo</label>
 		</div>
 		
-	<div class="col col-md-12">
-		<input id="Art. 10.8.1 - Vandalismo a Propriedade Pública" type="checkbox" class="form-check-input" name="crime" value="25|100000|130000" onclick="calcular()">
-		<label class="form-check-label" title="Intencionalmente causou danos à propriedade do Governo
-		" for="Art. 10.8.1 - Vandalismo a Propriedade Pública">Art. 10.8.1 - Vandalismo a Propriedade Pública</label>
-	</div>
+		<div class="col col-md-12">
+			<input id="Art. 10.8.1 - Dano a Propriedade Pública" type="checkbox" class="form-check-input" name="crime" 
+				value="25|100000|130000" onclick="calcular()">
+			<label class="form-check-label" title="Intencionalmente causou danos à propriedade do Governo
+			" for="Art. 10.8.1 - Dano a Propriedade Pública">Art. 10.8.1 - Dano a Propriedade Pública</label>
+		</div>
 	<!--
 	<div class="col col-md-12">
 		<input id="Art. 6.15 - Invasão de Propriedade" type="checkbox" class="form-check-input" name="crime" value="15|20000|50000" onclick="calcular()">
@@ -870,19 +890,16 @@
 		<div class="col col-md-12">
 			<input id="Art. 10.9 - Abuso de Autoridade" type="checkbox" class="form-check-input" name="crime"
 				value="25|50000|65000" onclick="calcular()">
-			<label class="form-check-label" title="Quando o Agente usa das suas atribuições do cargo para constranger, ameaçar, agredir ou qualquer outro ato que atinja um cidadão. ( DEVERA NESSE CASO SER ANALISADO PELA HIERARQUIA SUPERIOR DA POLICIA )
-			" for="Art. 10.9 - Abuso de Autoridade">Art. 10.9 - Abuso de
-				Autoridade</label>
+			<label class="form-check-label" title="Quando o Agente usa das suas atribuições do cargo para constranger, ameaçar, agredir ou qualquer outro ato que atinja um cidadão. ( DEVERA NESSE CASO SER ANALISADO PELA HIERARQUIA SUPERIOR DA POLICIA )" 
+				for="Art. 10.9 - Abuso de Autoridade">Art. 10.9 - Abuso de Autoridade</label>
 		</div>
 		<div class="col col-md-12">
-
 			<input id="Art. 10.10 - Uso de Máscara" type="checkbox" class="form-check-input" name="crime"
 				value="10|50000|65000" onclick="calcular()">
 			<label class="form-check-label" title="Usar mascara ou qualquer outra coisa que impeça o Agente de identificar um cidadão.
 			" for="Art. 10.10 - Uso de Máscara">Art. 10.10 - Uso de Máscara</label>
 		</div>
 		<div class="col col-md-12">
-
 			<input id="Art. 10.11 - Uso de Equipamentos Restritos" type="checkbox" class="form-check-input" name="crime"
 				value="10|50000|65000" onclick="calcular()">
 			<label class="form-check-label" title="Uso de equipamentos balísticos: coldres, coletes/capacetes militares etc..
@@ -891,7 +908,7 @@
 		</div>
 		<div class="col col-md-12">
 			<input id="Art. 10.12 - Apologia ao Crime" type="checkbox" class="form-check-input" name="crime"
-				value="20|100000|130000" onclick="calcular()">
+				value="45|100000|130000" onclick="calcular()">
 			<label class="form-check-label" title="O crime já foi praticado, exaltando o crime ou seu autor.
 			" for="Art. 10.12 - Apologia ao Crime">Art. 10.12 - Apologia ao Crime</label>
 		</div>
@@ -920,47 +937,40 @@
 			" for="Art. 10.16 - Intoxicação pública">Art. 10.16 - Intoxicação pública</label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 10.17 - Difamação, Injúria ou Calúnia" type="checkbox" class="form-check-input" name="crime"
-				value="15|30000|50000" onclick="calcular()">
-			<label class="form-check-label" title="É a imputação ofensiva atribuída contra a honorabilidade de alguém com a intenção de desacreditá-lo na sociedade em que vive, e provocar contra ele desprezo ou menosprezo público.
-			" for="Art. 10.17 - Difamação, Injúria ou Calúnia">Art. 10.17 - Difamação, Injúria ou Calúnia
-		</label>
-		</div>
-		<div class="col col-md-12">
-			<input id="Art. 10.18 - Perturbação da ordem" type="checkbox" class="form-check-input" name="crime"
+			<input id="Art. 10.17 - Perturbação da ordem" type="checkbox" class="form-check-input" name="crime"
 				value="0|5000|0" onclick="calcular()">
 			<label class="form-check-label" title="Pessoa está se comportando de maneira disruptiva, mas não apresenta sério perigo público.
-			" for="Art. 10.18 - Perturbação da ordem">Art. 10.18 - Perturbação da ordem
+			" for="Art. 10.17 - Perturbação da ordem">Art. 10.17 - Perturbação da ordem
 		</label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 10.19 - Perturbação do sossego alheio" type="checkbox" class="form-check-input" name="crime"
+			<input id="Art. 10.18 - Perturbação do sossego alheio" type="checkbox" class="form-check-input" name="crime"
 				value="10|30000|50000" onclick="calcular()">
 			<label class="form-check-label" title="Pessoa está se comportando de maneira disruptiva, mas não apresenta sério perigo público.
-			" for="Art. 10.19 - Perturbação do sossego alheio">Art. 10.19 - Perturbação do sossego alheio
+			" for="Art. 10.18 - Perturbação do sossego alheio">Art. 10.18 - Perturbação do sossego alheio
 
 		</label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 10.20 - Omissão de socorro" type="checkbox" class="form-check-input" name="crime"
+			<input id="Art. 10.19 - Omissão de socorro" type="checkbox" class="form-check-input" name="crime"
 				value="10|30000|50000" onclick="calcular()">
 			<label class="form-check-label" title="Deixar de prestar assistência, quando possível fazê-lo sem risco pessoal, à criança abandonada ou extraviada, ou à pessoa inválida ou ferida, ao desamparo ou em grave e iminente perigo; ou não pedir, nesses casos, o socorro da autoridade pública.
-			" for="Art. 10.20 - Omissão de socorro">Art. 10.20 - Omissão de socorro
+			" for="Art. 10.19 - Omissão de socorro">Art. 10.19 - Omissão de socorro
 		</label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 10.21 - Tráfico de influência" type="checkbox" class="form-check-input" name="crime"
+			<input id="Art. 10.20 - Tráfico de influência" type="checkbox" class="form-check-input" name="crime"
 				value="10|30000|50000" onclick="calcular()">
 			<label class="form-check-label" title="Consiste na prática ilegal de uma pessoa se aproveitar da sua posição privilegiada dentro de uma empresa ou entidade, ou das suas conexões com pessoas em posição de autoridade, para obter favores ou benefícios para si própria ou terceiros, geralmente em troca de favores ou pagamento.
-			" for="Art. 10.21 - Tráfico de influência">Art. 10.21 - Tráfico de influência
+			" for="Art. 10.20 - Tráfico de influência">Art. 10.20 - Tráfico de influência
 
 		</label>
 		</div>
 		<div class="col col-md-12">
-			<input id="Art. 10.22 - Obstrução de justiça" type="checkbox" class="form-check-input" name="crime"
+			<input id="Art. 10.21 - Obstrução de justiça" type="checkbox" class="form-check-input" name="crime"
 				value="20|50000|80000" onclick="calcular()">
-			<label class="form-check-label" title="Impedir ilegalmente a descoberta, a apreensão, a condenação, a defesa ou a punição de quem cometeu um crime ou de provas. Exemplos são, mas não limitados a: fornecer informações falsas a agentes da policia enquanto são detidos / presos, destruírem ou adulterar provas, ou utilizar qualquer violência ou ameaça física contra uma testemunha, oficial da lei ou autoridade judicial para impedir que a justiça seja cumprida. Esta taxa também é aplicável quando uma pessoa isca ou intencionalmente quebra a lei para ganhar a atenção de um oficial da lei." for="Art. 10.22 - Obstrução de justiça">
-				Art. 10.22 - Obstrução de justiça
+			<label class="form-check-label" title="Impedir ilegalmente a descoberta, a apreensão, a condenação, a defesa ou a punição de quem cometeu um crime ou de provas. Exemplos são, mas não limitados a: fornecer informações falsas a agentes da policia enquanto são detidos / presos, destruírem ou adulterar provas, ou utilizar qualquer violência ou ameaça física contra uma testemunha, oficial da lei ou autoridade judicial para impedir que a justiça seja cumprida. Esta taxa também é aplicável quando uma pessoa isca ou intencionalmente quebra a lei para ganhar a atenção de um oficial da lei." 
+				for="Art. 10.21 - Obstrução de justiça">Art. 10.21 - Obstrução de justiça
 			</label>
 		</div>
 
@@ -995,24 +1005,24 @@
 		</div>
 		<div class="col col-md-12">
 			<input id="Art. 11.3 - Dirigir na Contra Mão" type="checkbox" class="form-check-input" name="crime"
-				value="0|30000|0" onclick="calcular()">
+				value="1|30000|0" onclick="calcular()">
 			<label class="form-check-label" for="Art. 11.3 - Dirigir na Contra Mão">Art. 11.3 - Dirigir na Contra
 				Mão</label>
 		</div>
 		<div class="col col-md-12">
 
 			<input id="Art. 11.4 - Alta Velocidade" type="checkbox" class="form-check-input" name="crime"
-				value="0|25000|0" onclick="calcular()">
+				value="1|25000|0" onclick="calcular()">
 			<label class="form-check-label" for="Art. 11.4 - Alta Velocidade">Art. 11.4 - Alta Velocidade</label>
 		</div>
 		<div class="col col-md-12">
 			<input id="Art. 11.5 - Poluição Sonora" type="checkbox" class="form-check-input" name="crime"
-				value="0|30000|0" onclick="calcular()">
+				value="1|30000|0" onclick="calcular()">
 			<label class="form-check-label" for="Art. 11.5 - Poluição Sonora">Art. 11.5 - Poluição Sonora</label>
 		</div>
 		<div class="col col-md-12">
 			<input id="Art. 11.6 - Corridas Ilegais" type="checkbox" class="form-check-input" name="crime"
-				value="0|50000|0" onclick="calcular()">
+				value="1|50000|0" onclick="calcular()">
 			<label class="form-check-label" for="Art. 11.6 - Corridas Ilegais">Art. 11.6 - Corridas Ilegais</label>
 		</div>
 		<hr>
@@ -1029,7 +1039,7 @@
 
 		<div class="col col-md-12">
 			<input id="Art. 12.2 - Veículo Muito Danificado" type="checkbox" class="form-check-input" name="crime"
-				value="0|15000|0" onclick="calcular()">
+				value="0|25000|0" onclick="calcular()">
 			<label class="form-check-label" for="Art. 12.2 - Veículo Muito Danificado">Art. 12.2 - Veículo Muito
 				Danificado</label>
 		</div>
@@ -1039,10 +1049,17 @@
 		</h3>
 
 		<div class="col col-md-12">
-			<input id="Art. 13.1 - Veiculo Ilegalmente Estacionado" type="checkbox" class="form-check-input"
+			<input id="Art. 12.3 - Veiculo Ilegalmente Estacionado" type="checkbox" class="form-check-input"
 				name="crime" value="0|30000|0" onclick="calcular()">
-			<label class="form-check-label" for="Art. 13.1 - Veiculo Ilegalmente Estacionado">Art. 13.1 - Veiculo
-				Ilegalmente Estacionado</label>
+			<label class="form-check-label" for="Art. 12.3 - Veiculo Ilegalmente Estacionado">Art. 12.3 - Veiculo Ilegalmente Estacionado</label>
+		</div>
+
+		<div class="col col-md-12">
+			<input id="Art. 12.4 - Homicídio Culposo no Trânsito" type="checkbox" class="form-check-input"
+				name="crime" value="20|45000|60000" onclick="calcular()">
+			<label class="form-check-label" for="Art. 12.4 - Homicídio Culposo no Trânsito" title="O crime de homicídio ocorre sempre que uma pessoa tira a vida de outra, com ou sem intenção de matar. Dessa forma, ele também pode ocorrer em decorrência de acidentes de trânsito.">
+				Homicídio Culposo no Trânsito
+			</label>
 		</div>
 
 		<hr>
@@ -1051,42 +1068,39 @@
 		</h3>
 
 		<div class="col col-md-12">
-
 			<input id="Art. 15.1.1 - Desacato 1" type="checkbox" class="form-check-input" name="crime"
-				value="30|150000|NA" onclick="calcular()">
+				value="50|150000|NA" onclick="calcular()">
 			<label class="form-check-label" for="Art. 15.1.1 - Desacato 1">Art. 15.1.1 - Desacato 1**</label>
 		</div>
 		<div class="col col-md-12">
 
 			<input id="Art. 15.1.2 - Desacato 2" type="checkbox" class="form-check-input" name="crime"
-				value="30|150000|NA" onclick="calcular()">
+				value="0|150000|NA" onclick="calcular()">
 			<label class="form-check-label" for="Art. 15.1.2 - Desacato 2">Art. 15.1.2 - Desacato 2**</label>
 		</div>
 		<div class="col col-md-12">
 
 			<input id="Art. 15.1.3 - Desacato 3" type="checkbox" class="form-check-input" name="crime"
-				value="30|150000|NA" onclick="calcular()">
+				value="0|150000|NA" onclick="calcular()">
 			<label class="form-check-label" for="Art. 15.1.3 - Desacato 3">Art. 15.1.3 - Desacato 3**</label>
 		</div>
 		<div class="col col-md-12">
 
-			<input id="Art.  15.1.4 - Desacato 4" type="checkbox" class="form-check-input" name="crime"
-				value="30|150000|NA" onclick="calcular()">
-			<label class="form-check-label" for="Art.  15.1.4 - Desacato 4">Art. 15.1.4 - Desacato 4**</label>
+			<input id="Art. 15.1.4 - Desacato 4" type="checkbox" class="form-check-input" name="crime"
+				value="0|150000|NA" onclick="calcular()">
+			<label class="form-check-label" for="Art. 15.1.4 - Desacato 4">Art. 15.1.4 - Desacato 4**</label>
 		</div>
 
 		<div class="col col-md-12">
-
 			<input id="Art. 15.2 - Resistência a Prisão" type="checkbox" class="form-check-input" name="crime"
 				value="20|0|0" onclick="calcular()">
 			<label class="form-check-label" for="Art. 15.2 - Resistência a Prisão">Art. 15.2 - Resistência a
 				Prisão</label>
 		</div>
 		<div class="col col-md-12">
-
-			<input id="Art.  15.3 - Réu Reincidente" type="checkbox" class="form-check-input" name="crime"
+			<input id="Art. 15.3 - Réu Reincidente" type="checkbox" class="form-check-input" name="crime"
 				value="10|0|0" onclick="calcular()">
-			<label class="form-check-label" for="Art.  15.3 - Réu Reincidente">Art. 15.3 - Réu Reincidente</label>
+			<label class="form-check-label" for="Art. 15.3 - Réu Reincidente">Art. 15.3 - Réu Reincidente</label>
 		</div>
 		<!-- <div class="col col-md-12">
 	
