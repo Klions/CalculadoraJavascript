@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+
 $GLOBALS['build'] = "20221005";
 $GLOBALS['download'] = "cb.exe";
 $GLOBALS['mensagem'] = "";

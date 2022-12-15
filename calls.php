@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+
 $GLOBALS['servername'] = "produtos_sys.mysql.dbaas.com.br";
 $GLOBALS['username'] = "produtos_sys"; // root
 $GLOBALS['password'] = "P9Bu4whM8oEt";
