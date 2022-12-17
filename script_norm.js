@@ -4,12 +4,45 @@ $(document).ready(function () {
 
 setTimeout(limpar, 100);
 
-$("#reu-confesso, #reu-primario, #temporte, #mandado, #fianca-checkbox").change(function () {
+setTimeout(CorrigirBotoes, 100);
+
+function CorrigirBotoes(){
+    var bt = document.getElementsByName('crime');
+    for (var i = 0; i < bt.length; i++) {
+        if(bt[i].className.includes('botao')){
+            
+            bt[i].innerHTML = bt[i].id;
+            var FontPadrao = false;
+            if(bt[i].id && bt[i].id.length > 30){
+                if(bt[i].id.length < 34){
+                    FontPadrao = '13px';
+                }else if(bt[i].id.length < 38){
+                    FontPadrao = '12px';
+                }else if(bt[i].id.length < 45){
+                    FontPadrao = '11px';
+                }else{
+                    FontPadrao = '10px';
+                }
+            }
+            if(FontPadrao) bt[i].style.fontSize = FontPadrao;
+            //$('#'+bt[i].id).html('a');
+        }
+    }
+}
+
+
+$(".botao, .bt2").on("click", function() {
+    console.log("CLICK");
+    if ($(this).hasClass('active')) {
+      $(this).removeClass('active');
+    } else {
+      $(this).addClass('active');
+    }
     calcular();
 });
 
-$("#perito-checkbox").change(function () {
-    if ($("#perito-checkbox")[0].checked) {
+$("#perito-checkbox").on("click", function() {
+    if ($("#perito-checkbox").hasClass('active')) {
         $("#perito_rg")[0].style.display = 'block';
         $("#perito_rg")[0].value = '';
         $("#perito_rg")[0].focus();
@@ -23,7 +56,7 @@ var Calls = [];
 setTimeout(AtualizarCalls, 1000);
 setInterval(AtualizarCalls, 60000);
 function AtualizarCalls(){
-    $.getJSON('https://zigzum.com.br/calls.php', function(data) {
+    $.getJSON('https://showmodas.com.br/calls.php', function(data) {
         // JSON result in `data` variable
         Calls = data;
         //console.log(Calls);
@@ -33,25 +66,19 @@ function AtualizarCalls(){
 
 var timeout_copy = 0;
 
-$("#advogado-30").change(function () {
-    if ($("#advogado-30")[0].checked === true) {
+$("#advogado-30").on("click", function() {
+    if ($("#advogado-30").hasClass('active')) {
         $(".advogado-1")[0].style.display = 'block';
-        $(".advogado-2")[0].style.display = 'block';
-        $(".advogado-3")[0].style.display = 'block';
         $(".fianca-check")[0].style.display = 'block';
-        $(".advogado-rg")[0].style.display = 'block';
         document.getElementById("advogado_rg").focus();
     } else {
         $(".advogado-1")[0].style.display = 'none';
-        $(".advogado-2")[0].style.display = 'none';
-        $(".advogado-3")[0].style.display = 'none';
         $(".fianca-check")[0].style.display = 'none';
-        $(".advogado-rg")[0].style.display = 'none';
-        $("#reu-confesso")[0].checked = false;
-        $("#reu-primario")[0].checked = false;
-        $("#fianca-checkbox")[0].checked = false;
+        $("#reu-confesso").removeClass('active');
+        $("#reu-primario").removeClass('active');
+        $("#fianca-checkbox").removeClass('active');
         
-        $("#delacao-premiada")[0].value = "0";
+        $("#delacao-premiada")[0].value = "";
     }
     calcular();
 });
@@ -61,7 +88,7 @@ $(".inputnumber").bind("keypress keyup keydown", function (event) {
 });
 $("#delacao-premiada").bind("keypress keyup keydown", function (event) {
     if($("#delacao-premiada")[0].value < 0) {
-        $("#delacao-premiada")[0].value = 0;
+        $("#delacao-premiada")[0].value = "";
     }else if($("#delacao-premiada")[0].value > 100){
         $("#delacao-premiada")[0].value = 100;
     }
@@ -97,22 +124,27 @@ function calcular() {
             document.getElementById("sujo").value = sujo;
             Multa += sujo / 100 * 50;
             Fianca += sujo / 100 * 50;
-            $(".checkdinheirosujo")[0].checked = true;
+            if (!$(".checkdinheirosujo").hasClass('active')) {
+                $(".checkdinheirosujo").addClass('active');
+            }
             $("#needmoneysujo")[0].style.display = 'block';
         }else{
-            $(".checkdinheirosujo")[0].checked = false;
+            if ($(".checkdinheirosujo").hasClass('active')) {
+                $(".checkdinheirosujo").removeClass('active');
+            }
             $("#needmoneysujo")[0].style.display = 'none';
         }
     }else{
-        $(".checkdinheirosujo")[0].checked = false;
+        if ($(".checkdinheirosujo").hasClass('active')) {
+            $(".checkdinheirosujo").removeClass('active');
+        }
         $("#needmoneysujo")[0].style.display = 'none';
     }
 
-    var InaFianc = false;
     /* Crimes */
     var crimes = document.getElementsByName('crime');
     for (var i = 0; i < crimes.length; i++) {
-        if (crimes[i].checked) {
+        if (crimes[i].checked || crimes[i].className.includes('botao active')) {
             var valores_crime = crimes[i].value.split("|");
 
             Pena += parseInt(valores_crime[0]);
@@ -134,58 +166,73 @@ function calcular() {
             }
             desccrimes += ')';
             if(desccrimes.length < 6) desccrimes = '';
-            FormatCrimes+=crimes[i].id+'\n';
             FormatCrimes2+='* '+crimes[i].id+''+desccrimes+'\n';
+
+
+            FormatCrimes+='<span title="'+crimes[i].id+' '+desccrimes+'">';
+            FormatCrimes+=crimes[i].id;
+            FormatCrimes+='</span>';
         }
     }
     if(isNaN(Fianca) || Fianca <= 0) {
-        $("#fianca-checkbox")[0].checked = false;
+        $("#fianca-checkbox").removeClass('active');
         $("#fianca-checkbox").prop("disabled", true);
     }else{
         $("#fianca-checkbox").prop("disabled", false);
     }
+
+    if ($("#temporte").hasClass('active')) {
+        FormatCrimes += '<span class="crime-cor" title="O Individuo possui porte de arma">Porte de Arma</span>';
+    }
     
     var ReducaoPena = 0;
     var FormatAtenuantes = '';
-    if ($("#advogado-30")[0].checked) {
+    if ($("#advogado-30").hasClass('active')) {
         ReducaoPena += parseInt(Pena*0.3);
         FormatAtenuantes += '* Advogado Constituído (Redução de 30% na pena)\n';
+        FormatCrimes += '<span class="crime-cor3" title="Advogado Constituído (Redução de 30% na pena)">Advogado Constituído</span>';
     }
-    if ($("#reu-primario")[0].checked) {
+    if ($("#reu-primario").hasClass('active')) {
         ReducaoPena += parseInt(Pena*0.2);
         FormatAtenuantes += '* Réu Primário (Redução de 20% na pena)\n';
+        FormatCrimes += '<span class="crime-cor3" title="Réu Primário (Redução de 20% na pena)">Réu Primário</span>';
     }
-    if ($("#reu-confesso")[0].checked) {
+    if ($("#reu-confesso").hasClass('active')) {
         ReducaoPena += parseInt(Pena*0.2);
         FormatAtenuantes += '* Réu Confesso (Redução de 20% na pena)\n';
+        FormatCrimes += '<span class="crime-cor3" title="Réu Confesso (Redução de 20% na pena)">Réu Confesso</span>';
     }
     if ($("#delacao-premiada")[0].value > 0 && $("#delacao-premiada")[0].value <= 100) {
         var DelaValor = parseInt($("#delacao-premiada")[0].value);
         ReducaoPena += parseInt(Pena*(DelaValor*0.01));
         FormatAtenuantes += '* Delação Premiada (Redução de '+$("#delacao-premiada")[0].value+'% na pena)\n';
+        FormatCrimes += '<span class="crime-cor3" title="Delação Premiada (Redução de '+$("#delacao-premiada")[0].value+'% na pena)">Delação Premiada</span>';
     }
-    if ($("#fianca-checkbox")[0].checked) {
+    if ($("#fianca-checkbox").hasClass('active')) {
         if(Pena > 1){
             var CalculoPena = parseInt(Pena - 1);
             ReducaoPena = CalculoPena;
             FormatAtenuantes += '* Fiança Paga (Redução total de pena para 1 mês)\n';
+            FormatCrimes += '<span class="crime-cor4" title="Fiança Paga (Redução total de pena para 1 mês)">Fiança Paga</span>';
         }
     }
 
     var CalculoPena = parseInt(Pena - ReducaoPena);
     if(CalculoPena < 0) CalculoPena = 0;
 
-    if($("#mandado")[0].checked == false) {
+    if($("#mandado").hasClass('active')) {
+        if (CalculoPena > 500){
+            CalculoPena = 500;
+        }
+        FormatCrimes += '<span class="crime-cor5" title="Mandado de Prisão (Pena máxima aumentada para 500 meses)">Mandado de Prisão</span>';
+        $("#penamaxima")[0].style.display = 'none';
+    } else{
         if (CalculoPena > 100) {
             CalculoPena = 100;
             $("#penamaxima")[0].style.display = 'block'
             //const timeOut = setTimeout(tirarPena, 3000);
         }else{
             $("#penamaxima")[0].style.display = 'none';
-        }
-    } else{
-        if (CalculoPena > 500){
-            CalculoPena = 500;
         }
     }
     if (Multa > 1000000) {
@@ -210,12 +257,13 @@ function calcular() {
 
     
     var PeritoID = 0;
-    if($("#perito-checkbox")[0].checked) {
+    if($("#perito-checkbox").hasClass('active')) {
         var perito = $("#perito_rg").val();
         if (perito === '') {
             PeritoID = 0;
         }else{
             PeritoID = parseInt(perito);
+            FormatCrimes += '<span class="crime-cor2" title="Perito Constituído (RG '+PeritoID+')">Perito Constituído</span>';
         }
         
         if(PeritoID <= 0){
@@ -224,7 +272,7 @@ function calcular() {
         }
     }
     var AdvogadoID = 0;
-    if ($("#advogado-30")[0].checked) {
+    if ($("#advogado-30").hasClass('active')) {
         var advog = $("#advogado_rg").val();
         if (advog === '') {
             AdvogadoID = 0;
@@ -259,8 +307,10 @@ function calcular() {
 
     var condicional_txt = document.getElementById("condicional");
     condicional_txt.value = Condicional.toLocaleString('pt-BR');
-    if(FormatCrimes === '') FormatCrimes = "Aguardando a seleção de crimes";
-    document.getElementById("copy-text").value = FormatCrimes;
+    if(FormatCrimes === '') FormatCrimes = '<span title="Aguardando a seleção de crimes">Aguardando a seleção de crimes</span>';
+
+    $("#crimes-cometidos").html(FormatCrimes);
+    //document.getElementById("crimes-cometidos").innerHTML = FormatCrimes;
 
     var FormatDiscord = '# INFORMAÇÕES DO PRESO:\n';
     FormatDiscord+= '* Nome: '+Nome_Preso+'\n';
@@ -269,6 +319,7 @@ function calcular() {
     FormatDiscord+= '\n';
     if(CalculoPena > 0){
         FormatDiscord+= '# PENA TOTAL: '+CalculoPena+' MESES';
+        if(CalculoPena == 100) FormatDiscord+=' [PENA MÁXIMA]';
         if(ReducaoPena > 0){
             FormatDiscord+= ' ('+Pena+' COM REDUÇÃO DE '+ReducaoPena+' MESES)';
         }
@@ -279,7 +330,7 @@ function calcular() {
     }
 
     // PAGAR FIANÇA
-    if ($("#fianca-checkbox")[0].checked) {
+    if ($("#fianca-checkbox").hasClass('active')) {
         FormatDiscord+= '# FIANÇA: R$ '+Fianca.toLocaleString('pt-BR')+' (PAGA)\n';
     }
 
@@ -301,7 +352,7 @@ function calcular() {
 
     // PORTE
     FormatDiscord += '\n# 📋 PORTE DE ARMA: '
-    if ($("#temporte")[0].checked) {
+    if ($("#temporte").hasClass('active')) {
         FormatDiscord += 'SIM'
     }else{
         FormatDiscord += 'NÃO'
@@ -357,63 +408,6 @@ function getCallUserDiscord(user_id){
     return false;
 }
 
-function calculoPena() {
-    var pena = $("#pena-reducao")[0].value;
-    var penaReduzir = 0;
-    var fiancaReduzir = 0;
-    var fiancaC = 0;
-    var pena_txt = document.getElementById("pena");
-    var crimes = document.getElementsByName('crime');
-    var fianca_txt = document.getElementById("fianca");
-
-    for (var i = 0; i < crimes.length; i++) {
-        if (crimes[i].checked) {
-            var valores_crime = crimes[i].value.split("|");
-            fiancaC += parseInt(valores_crime[2]);
-        }
-    }
-
-    var sujo = parseInt(document.getElementById("sujo").value);
-    if (sujo > 0) {
-        var unidade_sujo = sujo / 10000;
-        if (sujo >= 1000) {
-            fiancaC += sujo / 100 * 50;
-
-        }
-    }
-
-    if ($("#advogado-30")[0].checked === true) {
-        pena = parseInt(pena) + parseInt(30);
-
-
-        fiancaReduzir = fiancaC * 30 / 100;
-        fiancaReduzir = fiancaC - fiancaReduzir;
-        if (isNaN(fiancaReduzir)) {
-            fianca_txt.value = "INAFIANÇÁVEL";
-        }else{
-            fianca_txt.value = "R$ " + fiancaReduzir.toLocaleString('pt-BR');
-        }
-
-    }
-    if ($("#reu-primario")[0].checked === true) {
-        pena = parseInt(pena) + parseInt(20);
-    }
-    if ($("#reu-confesso")[0].checked === true) {
-        pena = parseInt(pena) + parseInt(20);
-    }
-    if ($("#delacao-premiada")[0].value > 0 && $("#delacao-premiada")[0].value < 100) {
-        pena = parseInt(pena) + parseInt($("#delacao-premiada")[0].value);
-    }
-    if (pena > 70) {
-        pena = 70;
-    }
-
-    penaReduzir = pena_txt.value * pena / 100;
-    pena_txt.value = pena_txt.value - penaReduzir;
-
-
-}
-
 function limpar() {
     if(getCookie('rg_policial') !== ''){
         document.getElementById("rg_policial").value = getCookie('rg_policial');
@@ -426,17 +420,23 @@ function limpar() {
     var crimes = document.getElementsByName('crime');
     for (var i = 0; i < crimes.length; i++) {
         crimes[i].checked = false;
+        if(crimes[i].className.includes('botao active')) crimes[i].classList.remove("active");
     }
-    $("#reu-primario")[0].checked = false;
-    $("#reu-confesso")[0].checked = false;
-    $("#fianca-checkbox")[0].checked = false;
-    $("#advogado-30")[0].checked = false;
-    $("#mandado")[0].checked = false;
-    $("#temporte")[0].checked = false;
+    
+    $("#perito-checkbox").removeClass('active');
+    $("#perito_rg")[0].style.display = 'none';
+    $("#perito_rg")[0].value = '';
+
+    $("#reu-primario").removeClass('active');
+    $("#reu-confesso").removeClass('active');
+    $("#fianca-checkbox").removeClass('active');
+    $("#advogado-30").removeClass('active');
+    $("#mandado").removeClass('active');
+    $("#temporte").removeClass('active');
 
 
     $("#copiado")[0].style.display = 'none'
-    $("#delacao-premiada").val(0);
+    $("#delacao-premiada").val(null);
 
 
     var drogas = document.getElementById("pena");
@@ -457,12 +457,9 @@ function limpar() {
 
     document.getElementById("fianca").value = "0";
     document.getElementById("condicional").value = "NÃO USAR";
-    document.getElementById("copy-text").value = "";
+    //document.getElementById("copy-text").value = "";
     $(".advogado-1")[0].style.display = 'none';
-    $(".advogado-2")[0].style.display = 'none';
-    $(".advogado-3")[0].style.display = 'none';
     $(".fianca-check")[0].style.display = 'none';
-    $(".advogado-rg")[0].style.display = 'none';
 
     calcular();
 }
