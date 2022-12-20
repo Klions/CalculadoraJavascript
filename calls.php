@@ -1,3 +1,4 @@
+
 <?php
 header('Access-Control-Allow-Origin: *');
 
@@ -10,10 +11,12 @@ function VerificarScript(){
     $retorno = "[]";
     // Create connection
     $conn = new mysqli($GLOBALS['servername'], $GLOBALS['username'], $GLOBALS['password'], $GLOBALS['dbname']);
+    $conn->set_charset("utf8");
     // Check connection
     if ($conn->connect_error) {
         die("Conexão falhou: " . $conn->connect_error);
     }
+    
     $result = $conn->query("SELECT dados FROM pmesp_exportar WHERE id = 2");
     if ($result) {
         while($row = $result->fetch_assoc()) {
